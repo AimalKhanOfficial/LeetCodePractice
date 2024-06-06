@@ -13,7 +13,18 @@ function ListNode(val, next) {
 
 function LinkdedList() {
     this.head = null;
-    this.tail = null;
+}
+
+function addNode (val) {
+    let node = this.head;
+    if (!node) {
+        node = new ListNode(val, null);
+        return;
+    }
+    while (node) { 
+        nextNode = nextNode.next;
+    }
+    node = new ListNode(val, null);
 }
 
 /**
@@ -22,19 +33,19 @@ function LinkdedList() {
  * @return {ListNode}
  */
 var mergeTwoLists = function (list1, list2) {
-    let linkedList1 = new LinkdedList();
-    for (let i = 0; i < list1.length; i++) {
-        console.log('>>> linkedList', list1[i])
-        let newNode = new ListNode(list1[i], null);
-        if (linkedList1.head === null) {
-            linkedList1.head = newNode;
-            linkedList1.tail = newNode;
-        }
-        else {
-            linkedList1.tail = newNode;
-            linkedList1.tail.next = newNode;
-        }
-    }
+    console.log('>>> linkedList1', linkedList1)
+    // for (let i = 0; i < list1.length; i++) {
+    //     console.log('>>> linkedList', list1[i])
+    //     let newNode = new ListNode(list1[i], null);
+    //     if (linkedList1.head === null) {
+    //         linkedList1.head = newNode;
+    //         linkedList1.tail = newNode;
+    //     }
+    //     else {
+    //         linkedList1.tail = newNode;
+    //         linkedList1.tail.next = newNode;
+    //     }
+    // }
     return true;
 };
 
