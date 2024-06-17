@@ -1,3 +1,26 @@
+//Actual question
+//Submitted - solved - https://leetcode.com/problems/fibonacci-number/submissions/1291764939/
+let calcFibNumber = (nth, memo={}) => {
+    if (memo[nth]) return memo[nth];
+    if (nth <= 1) return nth;
+    else {
+        memo[nth] = calcFibNumber(nth - 1) + calcFibNumber(nth - 2);
+        return memo[nth];
+    }
+}
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var fib = function(n) {
+    return calcFibNumber(n);
+};
+
+console.log('>> fib', fib(4))
+
+//Practice via plain, recursive and DP approach
+
 //finding the nth fib number - brute force
 
 //nth as in - nth in the sequence and not the number itself
@@ -35,6 +58,5 @@ let fibNumberFinder = (nth) => {
     console.log('>> seq:', sequence)
 }
 
-fibNumberFinder(4)
+//fibNumberFinder(4)
 
-//maybe via dynamic programming
