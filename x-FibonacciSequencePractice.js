@@ -1,19 +1,36 @@
 //finding the nth fib number - brute force
 
 //nth as in - nth in the sequence and not the number itself
-let fibNumberFinder = (nth) => {
-    let start = 0;
-    let sum = 0;
-    for (let i = 0; i < nth; i++) {
-        if (i == 0) {
-            sequence = [start, 1];
-        }
-        else {
-            sum = sequence[i - 1] + sequence[i];
-            sequence.push(sum);
-        }
+// let fibNumberFinder = (nth) => {
+//     let start = 0;
+//     let sum = 0;
+//     for (let i = 0; i < nth; i++) {
+//         if (i == 0) {
+//             sequence = [start, 1];
+//         }
+//         else {
+//             sum = sequence[i - 1] + sequence[i];
+//             sequence.push(sum);
+//         }
+//     }
+//     console.log('>>> fibSeq', sequence)
+// }
+
+let getFibNumber = (nth) => {
+    if (nth <= 1) {
+        return nth;
     }
-    console.log('>>> fibSeq', sequence)
+    else {
+        console.log(`>> recursive approach call for getFibNumber(${nth - 1}) + getFibNumber(${nth - 2})`)
+        return getFibNumber(nth - 1) + getFibNumber(nth - 2);
+    }
+}
+
+// Recursive approach
+let fibNumberFinder = (nth) => {
+    let sequence = [];
+    sequence.push(getFibNumber(nth));
+    console.log('>> seq:', sequence)
 }
 
 fibNumberFinder(4)
