@@ -16,13 +16,15 @@
 //     console.log('>>> fibSeq', sequence)
 // }
 
-let getFibNumber = (nth) => {
+let getFibNumber = (nth, memo={}) => {
+    if (memo[nth]) return memo[nth];
     if (nth <= 1) {
         return nth;
     }
     else {
         console.log(`>> recursive approach call for getFibNumber(${nth - 1}) + getFibNumber(${nth - 2})`)
-        return getFibNumber(nth - 1) + getFibNumber(nth - 2);
+        memo[nth] = getFibNumber(nth - 1) + getFibNumber(nth - 2);
+        return memo[nth];
     }
 }
 
