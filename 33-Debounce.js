@@ -5,19 +5,19 @@
  */
 //https://leetcode.com/problems/debounce/description/
 let stack = [];
-let counter = 0;
 var debounce = function(fn, t) {
     return function(...args) {
-        //Needs to be reviewed and worked on
-        // if(stack.length > 0) {
-        //     let previewCall = stack.pop();
-        //     clearTimeout(previewCall);
-        //     counter++;
-        //     stack.push(setTimeout(fn, counter * t, ...args))
-        // } else {
-        //     stack.push(setTimeout(fn, t, ...args))
-        // }
-        setTimeout(fn, t, ...args)
+        if(stack.length > 0) {
+            let [timeoutCall, fnRef, time, allArgsArr] = stack.pop();
+            clearTimeout(timeoutCall);
+            stack.push([setTimeout(fnRef, time + t, ...args), fn, time + t, ...args])
+        } else {
+            stack.push([setTimeout(fn, t, ...args), fn, t, ...args])
+        }
+        stack.forEach(item => {
+            let [timeoutCall, fnRef, time, allArgsArr] = stack.pop();
+            timeoutCall;
+        })
     };
 };
 
