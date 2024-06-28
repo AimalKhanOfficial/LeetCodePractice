@@ -4,6 +4,7 @@
  * @return {Function}
  */
 //https://leetcode.com/problems/debounce/description/
+//couldn't solve it cuz it needs more time
 let stack = [];
 var debounce = function(fn, t) {
     return function(...args) {
