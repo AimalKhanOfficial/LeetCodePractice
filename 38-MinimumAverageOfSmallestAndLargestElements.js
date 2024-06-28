@@ -7,26 +7,14 @@ var minimumAverage = function(nums) {
     let smallest = 0;
     let smallestIndex = 0;
     let largest = 0;
-    let largestIndex = 0;
+    let largestIndex = nums.length - 1;
     let finalArr = [];
     while(nums.length !== 0) {
-        nums.forEach((value, i) => {
-            if (value > largest ) {
-                largest = value;
-                largestIndex = i;
+       for (let i = 0; i < nums.length; i++) {
+            if (nums[i] > largest) {
+                
             }
-        })
-        nums.splice(largestIndex, 1);
-        smallest = largest;
-        nums.forEach((value, i) => {
-            if (value < smallest ) {
-                smallest = value;
-                smallestIndex = i;
-            }
-        })
-        nums.splice(smallestIndex, 1);
-        finalArr.push((smallest + largest) / 2);
-        largest = smallest;
+       }
     }
     return Math.min(...finalArr)
 };
