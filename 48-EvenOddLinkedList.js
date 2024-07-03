@@ -31,7 +31,7 @@ var oddEvenList = function (head) {
     while (current.next) {
         //even number?
         if (current.val % 2 === 0) {
-            
+            oddList = new 
         } 
         else {
 
