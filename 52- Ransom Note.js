@@ -4,8 +4,18 @@
  * @return {boolean}
  */
 var canConstruct = function(ransomNote, magazine) {
-    console.log('>>>', [...magazine.split('')].sort())
-    return [...magazine.split('')].sort().join('').indexOf(ransomNote) !== -1 || magazine.includes(ransomNote);
+    let charNotFound = false;
+    magazine = magazine.split('');
+    for (let i = 0; i < ransomNote.length; i++) {
+        let index = magazine.indexOf(ransomNote[i]);
+        if (index !== -1) {
+            magazine.splice(index, 1);
+        } else {
+            charNotFound = true;
+            break;
+        }
+    }
+    return !charNotFound;
 };
 
-console.log('>>> ', canConstruct('aab', 'baa'));
+console.log('>>> ', canConstruct('fffbfg', 'effjfggbffjdgbjjhhdegh'));
