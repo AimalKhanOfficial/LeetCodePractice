@@ -1,0 +1,64 @@
+<!--https://stackoverflow.com/questions/78713848/behavior-of-javascript-in-passing-data/78713917?noredirect=1#comment138779408_78713917-->
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <div>
+    <table id="mainTable"></table>
+  </div>
+  <script>
+    window.onload = (event) => {
+      function getQ(CatID) {
+        CtID = CatID
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://dummy-json.mock.beeceptor.com/posts');
+        xhr.send();
+        xhr.onload = function () {
+          let response = JSON.parse(xhr.responseText);
+          renderQuestions(response);
+        }
+      };
+
+      function renderQuestions(response) {
+        let html = '';
+        for (let i = 0; i < response.length; i++) {
+          let title = response[i].title;
+          let auditDate = ''
+          if (title) {
+            let newTime = new Date();
+            auditDate = newTime.getTime();
+          } else {
+            auditDate = response[i].comment_count;
+          }
+          document.getElementById('mainTable').innerHTML += `
+              <tr class="tablerows">
+                  <td>
+                    <button id="btn${i}" class="btn btn-icon btn-primary">
+                      ${auditDate}${response[i].title} CAP
+                    </button>
+                  </td>
+               </tr>
+            `;
+        }
+        for (let i = 0; i < response.length; i++) {
+          document.getElementById('btn' + i).addEventListener('click', () => {
+            let BeforeInspectedDate = new Date() + response[i].title;
+            console.log('>>> BeforeInspectedDate', BeforeInspectedDate)
+            let beforedate = document.getElementById('bdate')
+            const newtime = new Date();
+            // i have tried other conditions as well they dont work. like nullish coalescing etc.
+            if (!BeforeInspectedDate) {
+              beforedate.value = newtime.getCurrentTime();
+            } else {
+              let newbeforedate = BeforeInspectedDate.split(' ')[0]
+              //beforedate.value = newafterdate;
+            }
+          });
+        }
+      }
+      getQ(1);
+    };
+  </script>
+</body>
+</html>
