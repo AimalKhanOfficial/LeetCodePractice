@@ -1,3 +1,3 @@
-# Write your MySQL query statement below
-# https://leetcode.com/problems/rising-temperature/submissions/1321184704/ needs work
-select y.id from Weather y where y.temperature > (select temperature from Weather x where x.id = y.id - 1)
+select y.id as 'Id' from Weather y 
+where y.temperature > 
+(select temperature from Weather x where DATE(x.recordDate) = DATE_SUB(y.recordDate, INTERVAL 1 DAY))
