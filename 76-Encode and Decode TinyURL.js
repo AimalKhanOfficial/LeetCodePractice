@@ -3,11 +3,7 @@ let hash = new Map();
 //hash.set('9b3o11', 'http://www.example.com/book.aspx');
 
 
-let generateIdentifier = (pathName = '') => {
-    pathName = pathName.split('/').filter(a => a);
-    let randomNumber = Math.floor(100000000 + Math.random() * 900000).toString(36);
-    return randomNumber;
-}
+let generateIdentifier = (pathName = '') => Math.floor(100000000 + Math.random() * 900000).toString(36);
 
 /**
  * Encodes a URL to a shortened URL.
