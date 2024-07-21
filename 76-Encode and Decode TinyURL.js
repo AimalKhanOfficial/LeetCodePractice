@@ -2,6 +2,7 @@ let hash = new Map();
 //hash.set('1p3r73', 'https://leetcode.gov.com/problems/design-tinyurl');
 //hash.set('9b3o11', 'http://www.example.com/book.aspx');
 
+//solved - https://leetcode.com/problems/encode-and-decode-tinyurl/solutions/5510991/js-50-ms-beats-95
 
 let generateIdentifier = (pathName = '') => Math.floor(100000000 + Math.random() * 900000).toString(36);
 
