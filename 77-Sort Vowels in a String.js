@@ -6,10 +6,9 @@
 var sortVowels = function (s) {
     let vowelsMap = {};
     let indexMap = [];
+    let allVowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
     for (let i = 0; i < s.length; i++) {
-        if (s[i] === 'a' || s[i] === 'e' || s[i] === 'i' || s[i] === 'o' || s[i] === 'u' ||
-            s[i] === 'A' || s[i] === 'E' || s[i] === 'I' || s[i] === 'O' || s[i] === 'U'
-        ) {
+        if (allVowels.includes(s[i])) {
             vowelsMap = {
                 ...vowelsMap, [i]: {
                     'value': s[i],
@@ -17,7 +16,7 @@ var sortVowels = function (s) {
                     'index': i
                 }
             };
-            indexMap.push(i)
+            indexMap.push(i);
         }
     }
     vowelsMap = Object.entries(vowelsMap).sort((a, b) => a[1].ASCIIValue - b[1].ASCIIValue);
@@ -30,4 +29,4 @@ var sortVowels = function (s) {
     return s.join('');
 };
 
-console.log('>>>', sortVowels('lEetcOde'))
+console.log('>>> expected: lEOtcede. actual:', sortVowels('lEetcOde'))
