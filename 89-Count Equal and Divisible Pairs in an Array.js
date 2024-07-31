@@ -3,16 +3,18 @@
  * @param {number} k
  * @return {number}
  */
-//submitted - but doesn't work right now - https://leetcode.com/problems/count-equal-and-divisible-pairs-in-an-array/submissions/1339013454/
+//solved - https://leetcode.com/problems/count-equal-and-divisible-pairs-in-an-array/submissions/1339050330/
 var countPairs = function (nums, k) {
     let result = 0;
     let processedIndices = [];
     for (let i = 0; i < nums.length; i++) {
         for (let j = 0; j < nums.length; j++) {
             if (i === j) continue;
-            if (nums[i] === nums[j] && ((i * j) % k) === 0 && !processedIndices.includes(i * j) &&  !processedIndices.includes(j * i)) {
-                processedIndices.push(i * j);
-                processedIndices.push(j * i);
+            let pair1 = `${i}_${j}`;
+            let pair2 = `${j}_${i}`;
+            if (nums[i] === nums[j] && ((i * j) % k) === 0 && !processedIndices.includes(pair1) && !processedIndices.includes(pair2)) {
+                processedIndices.push(`${i}_${j}`);
+                processedIndices.push(`${j}_${i}`);
                 result++;
             }
         }
