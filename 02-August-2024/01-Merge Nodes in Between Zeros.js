@@ -9,9 +9,7 @@ function ListNode(val, next) {
 
 const getMeALInkedList = (head) => {
     let listHead = null;
-    let arr = [];
     for (let i = 0; i < head.length; i++) {
-        arr.push(head[i]);
         if (listHead === null) {
             listHead = new ListNode(head[i]);
         }
@@ -23,10 +21,38 @@ const getMeALInkedList = (head) => {
             curr.next = new ListNode(head[i]);
         }
     }
-    return {
-        listHead, 
-        arr
-    };
+    return listHead;
+}
+
+const getMeAnArrFromALinkedList = (head) => {
+    let arr = [];
+    let sum = 0;
+    let anotherArr = [];
+    let allowSum = false;
+
+    let curr = head;
+    while (curr.next) {
+        if (curr.val === 0) {
+            if (allowSum) {
+                anotherArr.push(sum);
+                sum = 0;
+            }
+            else {
+                allowSum = true;
+            }
+        }
+
+        if (allowSum) {
+            sum += curr.val;
+        }
+
+        arr.push(curr.val);
+        curr = curr.next;
+    }
+    arr.push(curr.val);
+    anotherArr.push(sum);
+
+    return { arr, anotherArr };
 }
 
 /**
@@ -34,9 +60,8 @@ const getMeALInkedList = (head) => {
  * @return {ListNode}
  */
 var mergeNodes = function (head) {
-    let {listHead, arr} = getMeALInkedList(head);
-    console.log('>> arr', arr)
-    return linkedList
+    const {anotherArr} = getMeAnArrFromALinkedList(head);
+    return getMeALInkedList(anotherArr);
 };
 
 console.log('>> ', mergeNodes(head = [0, 3, 1, 0, 4, 5, 2, 0]))
