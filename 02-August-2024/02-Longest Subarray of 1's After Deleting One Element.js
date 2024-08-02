@@ -18,15 +18,14 @@ var longestSubarray = function (nums) {
     } else {
         let allLength = [];
         for (let i = 0; i < zeroIndices.length; i++) { 
-            if (i + 1 === zeroIndices) break;
-            let length = zeroIndices[i + 1]  - 2;
-            if (length) {
-                allLength.push(length)
-            }
+            let prev = zeroIndices[i - 1] ?? 0;
+            let next = zeroIndices[i + 1] ?? 0;
+            let length = i === 0 ? next - zeroIndices[i] : next - prev - 2;
+            allLength.push(length)
         }
         console.log('>> ', allLength)
         return Math.max(...allLength);
     }
 };
 
-console.log('>>', longestSubarray(nums = [0,1,1,1,0,1,1,0,1]))
+console.log('>>', longestSubarray(nums = [1,1,0,0,1,1,1,0,1]))
